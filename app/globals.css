@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  @apply bg-sand-50 text-ink-900 dark:bg-ink-950 dark:text-sand-50;
+  font-feature-settings: "ss01" on, "ss02" on;
+}
+
+::selection {
+  @apply bg-sprout-300/70 text-canopy-900;
+}
+
+/* Focus visibility, required quality floor */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid theme("colors.canopy.500");
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-canopy-300/60 dark:bg-canopy-700/60 rounded-full;
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/50 dark:bg-white/[0.04] backdrop-blur-xl border border-white/60 dark:border-white/10 shadow-glass dark:shadow-glass-dark;
+  }
+
+  .glass-card {
+    @apply glass rounded-3xl transition-all duration-500;
+  }
+
+  .eyebrow {
+    @apply font-mono text-[11px] tracking-[0.28em] uppercase text-canopy-600 dark:text-sprout-400;
+  }
+
+  .section-shell {
+    @apply relative mx-auto w-full max-w-6xl px-6 sm:px-8 lg:px-10;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 rounded-full bg-canopy-700 px-6 py-3 text-sm font-medium text-sand-50 shadow-glass transition-all duration-300 hover:bg-canopy-600 hover:-translate-y-0.5 active:translate-y-0 dark:bg-sprout-300 dark:text-ink-900 dark:hover:bg-sprout-200;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 rounded-full border border-canopy-700/20 dark:border-sprout-300/30 px-6 py-3 text-sm font-medium text-canopy-700 dark:text-sprout-200 transition-all duration-300 hover:bg-canopy-700/5 dark:hover:bg-sprout-300/10 hover:-translate-y-0.5;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-canopy-700/15 dark:border-sprout-300/20 bg-white/60 dark:bg-white/5 px-3 py-1 font-mono text-[11px] tracking-wide text-canopy-700 dark:text-sprout-300;
+  }
+}
+
+.bg-noise::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: theme("backgroundImage.grain");
+  mix-blend-mode: overlay;
+}
