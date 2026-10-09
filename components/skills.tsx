@@ -33,7 +33,7 @@ export function Skills() {
                       <SkillBar
                         key={s.name}
                         name={s.name}
-                        level={s.level}
+                        label={s.label}
                         delay={0.1 + si * 0.12}
                       />
                     ))}

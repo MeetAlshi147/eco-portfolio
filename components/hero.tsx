@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowDown, Download, Mail } from "lucide-react";
 import { TypingText } from "./typing-text";
-import { LeafCircuit } from "./leaf-circuit";
+import Image from "next/image";
 import { LeafIcon, RecycleIcon, EarthIcon } from "./eco-icons";
 
 const container = {
@@ -92,12 +92,28 @@ export function Hero() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="relative mx-auto aspect-square w-full max-w-md"
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          whileHover={{ scale: 1.03, rotate: 1 }}
+          className="relative mx-auto aspect-square w-full max-w-sm cursor-pointer"
         >
-          <LeafCircuit className="h-full w-full" />
+          {/* Glowing gradient border */}
+          <div className="h-full w-full rounded-2xl bg-gradient-to-br from-sprout-400 via-canopy-500 to-soil-400 p-[3px] shadow-[0_0_40px_-8px] shadow-sprout-400/60 dark:shadow-sprout-500/50 transition-shadow duration-500 hover:shadow-[0_0_55px_-4px] hover:shadow-sprout-400/70">
+            <div className="relative h-full w-full overflow-hidden rounded-[14px]">
+              <Image
+                src="/profile.jpg"
+                alt="Meet Mahesh Alshi"
+                fill
+                className="object-cover object-[center_15%] scale-[1.08] transition-transform duration-700 hover:scale-[1.13]"
+                priority
+              />
+              {/* Subtle bottom gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-canopy-900/40 via-transparent to-transparent" />
+            </div>
+          </div>
+          {/* Floating accent dot */}
+          <span className="absolute -bottom-3 -right-3 h-5 w-5 rounded-full bg-sprout-400 ring-4 ring-sand-50 dark:ring-ink-950 animate-pulse" />
         </motion.div>
       </div>
 

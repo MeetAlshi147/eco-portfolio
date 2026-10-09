@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "./theme-toggle";
-import { RecycleIcon } from "./eco-icons";
 
 const links = [
   { href: "#about", label: "About" },
@@ -41,10 +40,18 @@ export function Navbar() {
         >
           <a
             href="#top"
-            className="flex items-center gap-2 font-display text-lg font-semibold tracking-tight text-canopy-800 dark:text-sand-50"
+            className="flex items-center gap-2.5 font-display text-lg font-semibold tracking-tight text-canopy-800 dark:text-sand-50 group"
           >
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-canopy-700 text-sprout-200 dark:bg-sprout-300 dark:text-canopy-900">
-              <RecycleIcon className="h-4 w-4" strokeWidth={1.8} />
+            {/* Animated logo mark */}
+            <span className="relative flex h-8 w-8 items-center justify-center">
+              {/* Outer pulse ring */}
+              <span className="absolute inset-0 rounded-full bg-sprout-400/30 scale-100 group-hover:scale-125 transition-transform duration-500" />
+              {/* Inner circle */}
+              <span className="relative flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-canopy-600 to-sprout-400 dark:from-sprout-300 dark:to-canopy-500 shadow-md">
+                <span className="font-mono text-[11px] font-bold text-white dark:text-canopy-900 leading-none">
+                  MA
+                </span>
+              </span>
             </span>
             Meet Alshi
           </a>

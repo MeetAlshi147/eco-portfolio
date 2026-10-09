@@ -2,12 +2,12 @@
 
 import { FormEvent, useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Linkedin, Github, Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { Mail, Linkedin, Github, Send, CheckCircle2 } from "lucide-react";
 import { SectionHeading } from "./section-heading";
 import { Reveal } from "./reveal";
 
 const socials = [
-  { label: "Email", href: "mailto:meet.alshi@vit.edu.in", icon: Mail },
+  { label: "Email", href: "mailto:meetalshi19@gmail.com", icon: Mail },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/meetalshi_147",
@@ -17,35 +17,18 @@ const socials = [
 ];
 
 export function Contact() {
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
-  const [errorMsg, setErrorMsg] = useState("");
+  const [sent, setSent] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
-  async function handleSubmit(e: FormEvent) {
+  function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    setStatus("sending");
-    setErrorMsg("");
-
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-      const data = await res.json();
-
-      if (!res.ok) {
-        setStatus("error");
-        setErrorMsg(data.error || "Something went wrong. Please try again.");
-        return;
-      }
-
-      setStatus("sent");
-      setForm({ name: "", email: "", message: "" });
-    } catch {
-      setStatus("error");
-      setErrorMsg("Network error — please try again, or email me directly.");
-    }
+    const subject = encodeURIComponent(`Portfolio message from ${form.name}`);
+    const body = encodeURIComponent(
+      `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`
+    );
+    window.open(`mailto:meetalshi19@gmail.com?subject=${subject}&body=${body}`);
+    setSent(true);
+    setForm({ name: "", email: "", message: "" });
   }
 
   return (
@@ -53,7 +36,7 @@ export function Contact() {
       <SectionHeading
         eyebrow="Let's Talk"
         title="Get in Touch"
-        description="Interested in AI-driven solutions, robotics, or sustainable e-waste management? I’m open to collaborations, projects, and meaningful discussions."
+        description="Interested in AI-driven solutions, robotics, or full-stack projects? I'm open to collaborations, projects, and meaningful discussions."
       />
 
       <div className="mt-12 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
@@ -75,7 +58,7 @@ export function Contact() {
                     <p className="text-xs text-ink-900/50 dark:text-sand-100/50">{label}</p>
                     <p className="font-medium">
                       {label === "Email"
-                        ? "meet.alshi@vit.edu.in"
+                        ? "meetalshi19@gmail.com"
                         : label === "LinkedIn"
                         ? "linkedin.com/in/meetalshi147"
                         : "github.com/meetalshi147"}
@@ -135,34 +118,16 @@ export function Contact() {
             </div>
 
             <div className="flex flex-wrap items-center gap-4">
-              <button
-                type="submit"
-                disabled={status === "sending"}
-                className="btn-primary disabled:cursor-not-allowed disabled:opacity-60"
-              >
-                {status === "sending" ? (
-                  <Loader2 size={15} className="animate-spin" />
-                ) : (
-                  <Send size={15} />
-                )}
-                {status === "sending" ? "Sending..." : "Send Message"}
+              <button type="submit" className="btn-primary">
+                <Send size={15} /> Send Message
               </button>
-              {status === "sent" && (
+              {sent && (
                 <motion.span
                   initial={{ opacity: 0, x: -8 }}
                   animate={{ opacity: 1, x: 0 }}
                   className="flex items-center gap-1.5 text-sm text-canopy-600 dark:text-sprout-400"
                 >
-                  <CheckCircle2 size={15} /> Message sent — thanks for reaching out!
-                </motion.span>
-              )}
-              {status === "error" && (
-                <motion.span
-                  initial={{ opacity: 0, x: -8 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  className="flex items-center gap-1.5 text-sm text-soil-600 dark:text-soil-400"
-                >
-                  <AlertCircle size={15} /> {errorMsg}
+                  <CheckCircle2 size={15} /> Your email client should open — thanks!
                 </motion.span>
               )}
             </div>

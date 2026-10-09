@@ -32,7 +32,7 @@ export interface Project {
 export interface SkillCategory {
   category: string;
   icon: "code" | "brain" | "wrench";
-  skills: { name: string; level: number }[];
+  skills: { name: string; label: string }[];
 }
 
 export interface Certification {

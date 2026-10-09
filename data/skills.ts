@@ -5,27 +5,27 @@ export const skillCategories: SkillCategory[] = [
     category: "Programming",
     icon: "code",
     skills: [
-      { name: "Java", level: 80 },
-      { name: "Python", level: 90 },
-      { name: "SQL", level: 75 },
+      { name: "Java", label: "Intermediate" },
+      { name: "Python", label: "Intermediate / Advanced" },
+      { name: "SQL", label: "Intermediate" },
     ],
   },
   {
     category: "AI / ML",
     icon: "brain",
     skills: [
-      { name: "Machine Learning", level: 85 },
-      { name: "Computer Vision", level: 80 },
-      { name: "Data Analysis", level: 78 },
+      { name: "Machine Learning", label: "Intermediate" },
+      { name: "Computer Vision", label: "Beginner – Intermediate" },
+      { name: "Data Analysis", label: "Intermediate" },
     ],
   },
   {
     category: "Tools",
     icon: "wrench",
     skills: [
-      { name: "OpenCV", level: 80 },
-      { name: "TensorFlow (basic)", level: 60 },
-      { name: "Scikit-learn", level: 72 },
+      { name: "OpenCV", label: "Intermediate" },
+      { name: "TensorFlow", label: "Beginner" },
+      { name: "Scikit-learn", label: "Intermediate" },
     ],
   },
 ];

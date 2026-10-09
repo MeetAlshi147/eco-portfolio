@@ -153,11 +153,32 @@ export const activities: Activity[] = [
   ],
   },
   {
-  id: "e-waste-awareness-drive",
+  id: "clean-kerala-company",
   order: 8,
+  title: "Clean Kerala Company — Building a Waste-Free Kerala",
+  type: "Group Presentation & Report",
+  date: "23 Sep 2026",
+  objective:
+    "Study Clean Kerala Company (CKCL) and its scientific approach to managing non-biodegradable and legacy waste across Kerala. Understand its operational workflow, community partnerships, infrastructure, environmental impact, challenges, and opportunities for sustainable waste management.",
+  fileUrl: "/files/Kerala Waste Company Report.pdf",
+  fileLabel: "Clean_Kerala_Company_Report.pdf",
+  whatILearned:
+    "I learned how Clean Kerala Company connects community-level waste collection with segregation, material recovery, recycling, co-processing, and productive use of residual waste. The study covered Material Collection Facilities (MCFs), Resource Recovery Facilities (RRFs), the role of Haritha Karma Sena, Kudumbashree, Suchitwa Mission, and local self-government bodies, along with CKCL's response to waste management challenges such as the 2024 Wayanad landslide clean-up.",
+  sustainabilityConnection:
+    "The CKCL model demonstrates how coordinated waste collection, segregation, and material recovery can reduce dependence on dumping and support a circular economy. Sending recyclable materials to registered recyclers and directing selected non-recyclables to co-processing can help recover resources and encourage more scientific waste management.",
+  reflection:
+    "This activity helped me understand that effective waste management requires more than simply collecting and disposing of waste. It depends on citizen participation, scientific segregation, appropriate processing facilities, government coordination, and public awareness. Studying CKCL showed me how collaboration between communities, local bodies, and processing partners can contribute to a cleaner and more sustainable environment.",
+  references: [
+    "Clean Kerala Company — Building a Waste-Free Kerala (Group Presentation)",
+    "Clean Kerala Waste Management Report — Academic Submission",
+  ],
+  },
+  {
+  id: "e-waste-awareness-drive",
+  order: 9,
   title: "E-Waste Awareness Drive 2026",
   type: "Awareness Campaign",
-  date: "Oct 2026",
+  date: "07 Oct 2026",
   objective:
     "Create an interactive digital awareness campaign to educate users about responsible e-waste management through an engaging website, hands-on sorting activity, and knowledge-based quiz.",
   fileUrl: "/files/E-waste Awareness Drive.pdf",
@@ -172,5 +193,5 @@ export const activities: Activity[] = [
     "E-Waste Awareness Drive 2026",
     "United Nations — Global E-Waste Monitor 2024",
   ],
-},
+  },
 ];
